@@ -14,18 +14,19 @@ ChronoSync Documentation
    :hidden:
    :maxdepth: 3
 
-   DesignDoc
-   FAQ
-   ChronoChat
+   design
+   faq
+   old-design
 
 ..
    INSTALL
 
-* :doc:`DesignDoc`
+* :doc:`design`
 
-* :doc:`FAQ`
+* :doc:`faq`
 
-* :doc:`ChronoChat`
+* :doc:`old-design`
+
 
 **Additional documentation**
 
