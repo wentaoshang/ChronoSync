@@ -48,31 +48,27 @@ def build(bld):
         # vnum = "1.0.0",
         features=['cxx', 'cxxshlib'],
         source =  bld.path.ant_glob(['src/**/*.cpp', 'src/**/*.proto']),
-        use = 'BOOST NDN_CXX',
+        use = 'BOOST NDN_CXX LOG4CXX',
         includes = ['src', '.'],
+        export_includes=['src', '.'],
         )
 
     # Unit tests
     if bld.env["_TESTS"]:
         bld.recurse('tests')
 
-    if bld.get_define("HAVE_LOG4CXX"):
-        libsync.use += ' LOG4CXX'
-        if bld.env["_TESTS"]:
-            unittests.use += ' LOG4CXX'
-
     bld.install_files(
         dest = "%s/ChronoSync" % bld.env['INCLUDEDIR'],
-        files = bld.path.ant_glob(['src/**/*.h']),
+        files = bld.path.ant_glob(['src/**/*.hpp', 'src/**/*.h', 'common.hpp']),
         cwd = bld.path.find_dir("src"),
-        relative_trick = True,
+        relative_trick = False,
         )
 
     bld.install_files(
         dest = "%s/ChronoSync" % bld.env['INCLUDEDIR'],
-        files = bld.path.get_bld().ant_glob(['src/**/*.h']),
+        files = bld.path.get_bld().ant_glob(['src/**/*.hpp', 'src/**/*.h', 'common.hpp', 'config.hpp']),
         cwd = bld.path.get_bld().find_dir("src"),
-        relative_trick = True,
+        relative_trick = False,
         )
 
     pc = bld(
