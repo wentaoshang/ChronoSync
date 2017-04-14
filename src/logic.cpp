@@ -65,6 +65,7 @@ const ndn::name::Component Logic::RESET_COMPONENT("reset");
 const ndn::name::Component Logic::RECOVERY_COMPONENT("recovery");
 
 Logic::Logic(ndn::Face& face,
+             ndn::KeyChain& keychain,
              const Name& syncPrefix,
              const Name& defaultUserPrefix,
              const UpdateCallback& onUpdate,
@@ -95,6 +96,7 @@ Logic::Logic(ndn::Face& face,
   , m_syncReplyFreshness(syncReplyFreshness)
   , m_recoveryInterestLifetime(recoveryInterestLifetime)
   , m_defaultSigningId(defaultSigningId)
+  , m_keyChain(keychain)
   , m_validator(validator)
 {
 #ifdef _DEBUG

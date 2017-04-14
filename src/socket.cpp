@@ -37,13 +37,15 @@ const std::shared_ptr<ndn::Validator> Socket::DEFAULT_VALIDATOR;
 Socket::Socket(const Name& syncPrefix,
                const Name& userPrefix,
                ndn::Face& face,
+               ndn::KeyChain& keychain,
                const UpdateCallback& updateCallback,
                const Name& signingId,
                std::shared_ptr<ndn::Validator> validator)
   : m_userPrefix(userPrefix)
   , m_face(face)
-  , m_logic(face, syncPrefix, userPrefix, updateCallback)
+  , m_logic(face, keychain, syncPrefix, userPrefix, updateCallback)
   , m_signingId(signingId)
+  , m_keyChain(keychain)
   , m_validator(validator)
 {
   if (m_userPrefix != DEFAULT_NAME)

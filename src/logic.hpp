@@ -117,6 +117,7 @@ public:
    * @param cancelResetTimer The timer to exit from Reset state
    */
   Logic(ndn::Face& face,
+        ndn::KeyChain& keychain,
         const Name& syncPrefix,
         const Name& defaultUserPrefix,
         const UpdateCallback& onUpdate,
@@ -515,7 +516,7 @@ private:
 
   // Security
   ndn::Name m_defaultSigningId;
-  ndn::KeyChain m_keyChain;
+  ndn::KeyChain& m_keyChain;
   std::shared_ptr<ndn::Validator> m_validator;
 
 

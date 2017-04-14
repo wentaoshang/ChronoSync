@@ -62,6 +62,7 @@ public:
   Socket(const Name& syncPrefix,
          const Name& userPrefix,
          ndn::Face& face,
+         ndn::KeyChain& keychain,
          const UpdateCallback& updateCallback,
          const Name& signingId = DEFAULT_NAME,
          std::shared_ptr<ndn::Validator> validator = DEFAULT_VALIDATOR);
@@ -230,7 +231,7 @@ private:
   Logic m_logic;
 
   ndn::Name m_signingId;
-  ndn::KeyChain m_keyChain;
+  ndn::KeyChain& m_keyChain;
   std::shared_ptr<ndn::Validator> m_validator;
 
   RegisteredPrefixList m_registeredPrefixList;
