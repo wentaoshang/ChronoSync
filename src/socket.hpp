@@ -63,6 +63,7 @@ public:
          const Name& userPrefix,
          ndn::Face& face,
          ndn::KeyChain& keychain,
+         uint32_t seed,
          const UpdateCallback& updateCallback,
          const Name& signingId = DEFAULT_NAME,
          std::shared_ptr<ndn::Validator> validator = DEFAULT_VALIDATOR);

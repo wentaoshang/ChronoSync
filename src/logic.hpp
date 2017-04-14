@@ -118,6 +118,7 @@ public:
    */
   Logic(ndn::Face& face,
         ndn::KeyChain& keychain,
+        uint32_t seed,
         const Name& syncPrefix,
         const Name& defaultUserPrefix,
         const UpdateCallback& onUpdate,

@@ -66,6 +66,7 @@ const ndn::name::Component Logic::RECOVERY_COMPONENT("recovery");
 
 Logic::Logic(ndn::Face& face,
              ndn::KeyChain& keychain,
+             uint32_t seed,
              const Name& syncPrefix,
              const Name& defaultUserPrefix,
              const UpdateCallback& onUpdate,
@@ -86,7 +87,7 @@ Logic::Logic(ndn::Face& face,
   , m_needPeriodReset(resetTimer > time::steady_clock::Duration::zero())
   , m_onUpdate(onUpdate)
   , m_scheduler(m_face.getIoService())
-  , m_randomGenerator(static_cast<unsigned int>(std::time(0)))
+  , m_randomGenerator(seed)
   , m_rangeUniformRandom(m_randomGenerator, boost::uniform_int<>(100,500))
   , m_reexpressionJitter(m_randomGenerator, boost::uniform_int<>(100,500))
   , m_resetTimer(resetTimer)
